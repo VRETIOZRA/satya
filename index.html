@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>happy valentine’s day sayangg</title>
+
+<style>
+body{
+  margin:0;
+  height:100vh;
+  background:linear-gradient(180deg,#1a0f1f,#0b1c2d);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family:Segoe UI, sans-serif;
+  color:#fff;
+  overflow:hidden;
+}
+
+/* OPENING */
+.opening{
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+
+.opening h1{
+  font-size:32px;
+  color:#ffffff;
+}
+
+.opening p{
+  opacity:.85;
+  margin-top:6px;
+}
+
+button{
+  margin-top:22px;
+  padding:12px 34px;
+  border:none;
+  border-radius:30px;
+  background:#ffffff;
+  color:#0b1c2d;
+  cursor:pointer;
+  font-size:15px;
+  transition:.3s;
+}
+
+button:hover{
+  background:#e6e6e6;
+}
+
+/* LETTER */
+.letter{
+  display:none;
+  background:rgba(255,255,255,.08);
+  backdrop-filter:blur(12px);
+  padding:38px 32px;
+  border-radius:22px;
+  max-width:520px;
+  text-align:center;
+  box-shadow:0 0 40px rgba(0,0,0,.6);
+  animation:fadeIn 1.2s ease;
+}
+
+#typedText{
+  white-space:pre-line;
+  line-height:1.8;
+  min-height:220px;
+  font-size:16px;
+}
+
+/* HEART PUTIH */
+.heart{
+  position:absolute;
+  top:-10px;
+  color:rgba(255,255,255,.9);
+  animation:fall linear forwards;
+}
+
+@keyframes fall{
+  to{
+    transform:translateY(110vh);
+    opacity:0;
+  }
+}
+
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(20px);}
+  to{opacity:1; transform:translateY(0);}
+}
+</style>
+</head>
+
+<body>
+
+<!-- OPENING -->
+<div class="opening" id="opening">
+  <h1>happy valentine’s day sayangg 🤍</h1>
+  <p>aku cuma mau kamu baca ini pelan-pelan…</p>
+  <button onclick="openLetter()">buka dari ezra</button>
+</div>
+
+<!-- LETTER -->
+<div class="letter" id="letter">
+  <h2>happy valentine’s day, satyaa 🤍</h2>
+  <div id="typedText"></div>
+</div>
+
+<!-- MUSIC -->
+<audio id="bgMusic" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const text = `hari ini spesial sih…
+tapi jujur, sejak ada kmu,
+hari biasa pun rasanya ikut jadi spesial.
+
+you bring this soft kind of happiness
+that makes everything feel lighter and warmer,
+and i really, really like that.
+
+aku sayangg kmu, beneran dehh,
+i love you to the moon and back tyaa. 🤍`;
+
+let i = 0;
+
+function openLetter(){
+  document.getElementById("opening").style.display="none";
+  document.getElementById("letter").style.display="block";
+  typeText();
+  document.getElementById("bgMusic").play();
+}
+
+function typeText(){
+  if(i < text.length){
+    document.getElementById("typedText").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typeText,35);
+  }
+}
+
+/* HEART PUTIH JATUH */
+function heart(){
+  const h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="❤";
+  h.style.left=Math.random()*100+"vw";
+  h.style.fontSize=(14+Math.random()*22)+"px";
+  h.style.animationDuration=(4+Math.random()*4)+"s";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),8000);
+}
+
+setInterval(heart,280);
+</script>
+
+</body>
+</html>
